@@ -12,6 +12,9 @@ sudo apt-get install -y nodejs
 cd /usr/src/
  
 git clone https://github.com/MariaDB/mariadb-connector-odbc.git
+cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_OPENSSL=true -DCMAKE_INSTALL_PREFIX=/usr/local -LH
 git clone https://github.com/MariaDB/mariadb-connector-c.git
 cd mariadb-connector-c
 git checkout tags/v3.1.7
+                
+
