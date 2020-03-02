@@ -1,5 +1,5 @@
 apt-get update && apt-get upgrade -y 
-apt-get install -y mongodb build-essential checkinstall libiksemel-dev libiksemel3 cmake openssh-server apache2 mariadb-server\
+apt-get install -y mongodb libssl1.0-dev build-essential checkinstall libiksemel-dev libiksemel3 cmake openssh-server apache2 mariadb-server\
 mariadb-client bison flex php php-curl php-cli php-pdo php-mysql php-pear php-gd php-mbstring php-intl\
 curl sox libncurses5-dev libssl-dev mpg123 libxml2-dev odbcinst libnewt-dev libedit-dev sqlite3\
 libsqlite3-dev pkg-config automake libtool autoconf git unixodbc-dev uuid uuid-dev\
