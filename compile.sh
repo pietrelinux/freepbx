@@ -27,7 +27,56 @@ cd mariadb-connector-odbc/
 git checkout tags/3.0.1
 cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Release -DWITH_OPENSSL=true -DCMAKE_INSTALL_PREFIX=/usr/local -LH
 make
+make install
+pear install Console_Getopt
+cd /usr/src
+wget http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-17.2.0.tar.gz
+wget http://downloads.asterisk.org/pub/telephony/dahdi-linux-complete/dahdi-linux-complete-current.tar.gz
+wget http://downloads.asterisk.org/pub/telephony/libpri/libpri-current.tar.gz
 
-  
+tar xvfz dahdi-linux-complete-current.tar.gz
+tar xvfz libpri-current.tar.gz
+tar xvfz asterisk-17.2.0.tar.gz asterisk-17.2.0
+
+cd dahdi-linux-complete-3.1.0+3.1.0/
+make all
+make install
+make config
+
+cd /usr/src
+cd dahdi-linux-complete-3.1.0+3.1.0/
+make all
+cd ..
+cd libpri-1.6.0/
+make
+make install
+cd /usr/src
+tar xvfz asterisk-17.2.0.tar.gz asterisk-17.2.0
+cd asterisk-17.2.0/
+contrib/scripts/get_mp3_source.sh 
+contrib/scripts/install_prereq install
+./configure --with-pjproject-bundled --with-jansson-bundled
+sudo apt install libedit-dev
+sudo apt install libxml2-dev
+make menuselect.makeopts
+menuselect/menuselect --enable app_macro --enable format_mp3 menuselect.makeopts
+make
+make install
+make config
+ldconfig
+useradd -m asterisk
+chown asterisk. /var/run/asterisk
+chown -R asterisk. /etc/asterisk
+chown -R asterisk. /var/{lib,log,spool}/asterisk
+chown -R asterisk. /usr/lib/asterisk
+rm -rf /var/www/html
+sed -i 's/\(^upload_max_filesize = \).*/\120M/' /etc/php/7.0/apache2/php.ini
+cp /etc/apache2/apache2.conf /etc/apache2/apache2.conf_orig
+sed -i 's/^\(User\|Group\).*/\1 asterisk/' /etc/apache2/apache2.conf
+sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+a2enmod rewrite
+service apache2 restart
+cat <<EOF > /etc/odbcinst.ini
+[MySQL]
   
 
