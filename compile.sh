@@ -1,5 +1,5 @@
 apt-get update && apt-get upgrade -y 
-apt-get install -y build-essential checkinstall cmake openssh-server apache2 mariadb-server\
+apt-get install -y build-essential checkinstall libiksemel-dev libiksemel3 cmake openssh-server apache2 mariadb-server\
 mariadb-client bison flex php php-curl php-cli php-pdo php-mysql php-pear php-gd php-mbstring php-intl\
 curl sox libncurses5-dev libssl-dev mpg123 libxml2-dev odbcinst libnewt-dev libedit-dev sqlite3\
 libsqlite3-dev pkg-config automake libtool autoconf git unixodbc-dev uuid uuid-dev\
@@ -54,8 +54,6 @@ cd asterisk-17.2.0/
 contrib/scripts/get_mp3_source.sh 
 contrib/scripts/install_prereq install
 ./configure --with-pjproject-bundled --with-jansson-bundled
-sudo apt install libedit-dev
-sudo apt install libxml2-dev
 make menuselect.makeopts
 menuselect/menuselect --enable app_macro --enable format_mp3 menuselect.makeopts
 make
