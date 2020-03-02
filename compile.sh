@@ -19,8 +19,6 @@ cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX=/usr/local -LH
 make
 echo "MariaDB ODBC client library" | tee description-pak
 checkinstall --nodoc --pkgname "mariadb-connector-client-library" --pkgversion "3.1.7" --provides "mariadb-connector-client-library" --requires "libssl1.0.2" --requires "mariadb-server" --maintainer "pietre.linux@gmail.com" --replaces none --conflicts none --install=no -y
-apt install checkinstall
-checkinstall --nodoc --pkgname "mariadb-connector-client-library" --pkgversion "3.1.7" --provides "mariadb-connector-client-library" --requires "libssl1.0.2" --requires "mariadb-server" --maintainer "pietre.linux@gmail.com" --replaces none --conflicts none --install=no -y
 sudo dpkg -i mariadb-connector-client-library_3.1.7-1_arm64.deb 
 cd /usr/src/
 cd mariadb-connector-odbc/
